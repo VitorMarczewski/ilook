@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="navbar-actions">
+            <ul>
+                {{#if session.storeid}}
+                    <li><a href="/store/logout">SAIR DA LOJA</a></li>
+                {{else}}
+                    <li><a href="/store/login">SUA LOJA</a></li>
+                {{/if}}
+                
+                {{#if session.userid}}
+                    <li><a href="/logout">SAIR</a> </li>
+                {{else}}
+                    <li><a href="/login">LOGIN</a> </li>
+                {{/if}}
+            </ul>
+        </div>
+        <div class="navbar-search">
+            <a href="/">ILOOK</a>           
+            {{#if session.storeid}}
+                <form action="" class="form-search" >
+                    <div class="input-search">
+                        <input type="text" name="search" placeholder="Busque produtos em sua loja" >
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                    </div>
+                </form>  
+            {{else}}
+                <form action="" class="form-search" >
+                    <div class="input-search">
+                        <input type="text" name="search" placeholder="O que esta procurando" >
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                    </div>
+                </form>                   
+                <form action="" method="get" class="form-cart">
+                    <p>CARRINHO</p>
+                </form>
+            
+            {{/if}}
+        </div>
+        
+    </nav>
+    <div class="container-body">
+        
+        {{#if messages.message}}
+               <div class="message">{{messages.message}}</div>
+            {{/if}}
+        {{{body}}}
+    </div>
+</body>
+</html>
